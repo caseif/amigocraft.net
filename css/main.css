@@ -1,0 +1,184 @@
+@font-face {
+	font-family: Adobe Caslon Pro Bold Italic;
+	src: url('/fonts/caslon/webfont.eot');
+	src: url('/fonts/caslon/webfont.ttf') format('truetype'),
+		 url('/fonts/caslon/webfont.eot?#iefix') format('embedded-opentype'),
+		 url('/fonts/caslon/webfont.woff2') format('woff2'),
+		 url('/fonts/caslon/webfont.woff') format('woff'),
+		 url('/fonts/caslon/webfont.svg#adobe_caslon_probold_italic') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+
+html {
+	background-color: #D8D8FF;
+	color: black;
+	background-size: 64px;
+	background-attachment: fixed;
+	font-family:  "Tahoma", "Helvetica", sans-serif;
+}
+
+body {
+	width: 960px;
+	margin-top: -8px;
+	margin-bottom: -8px;
+	margin-left: auto;
+	margin-right: auto;
+	background-color: #F9F9F7;
+}
+
+a {
+	-o-transition: all .5s;
+	-ms-transition: all .5s;
+	-moz-transition: all .5s;
+	-webkit-transition: all .5s;
+	transition: all .5s;
+	outline: none;
+}
+
+a img {
+	outline: none;
+}
+
+img {
+	border: 0;
+}
+
+#container {
+	font-size: 13pt;
+	color: black;
+	padding-left: 10px;
+	margin-right: 10px;
+}
+
+#container a, a:visited {
+	color: darkblue;
+}
+
+#container a:hover, #footer a:hover {
+	color: #39F;
+}
+
+#header {
+	color: #FFFFFF;
+	padding-top: 15px;
+	width: 960px;
+	margin-left: -10px;
+	height: 196px;
+}
+
+#loginbar {
+	padding-bottom: 7px;
+	font-size: 13pt;
+	color: black;
+	width: 960px;
+	text-align: right;
+	font-weight: bold;
+}
+
+#loginbar a {
+	text-decoration: none;
+	padding-left: 8px;
+	padding-right: 8px;
+	color: black;
+}
+
+#loginbar a:hover{
+	background: #999;
+	padding-top: 9px;
+	padding-bottom: 8px;
+	color: black;
+}
+
+#banner {
+	width: 950px;
+	padding-left: 10px;
+	height: 120px;
+	background-image: url(/img/banner.png);
+	background-position: 0px -90px;
+	background-size: 960px 252px;
+	position: relative;
+	float: left;
+	padding-top: 15px;
+	margin-bottom: -10px;
+	font-family:  Adobe Caslon Pro Bold Italic;
+	text-decoration: none;
+	font-size: 54pt;
+	color: #E0CA77;
+}
+
+#logo {
+	float: left;
+	padding-right: 20px;
+}
+
+#linkbar {
+	height: 30px;
+	background-image: url(/img/mc/grass_side.png);
+	background-size: 44px 44px;
+	position: relative;
+	margin-top: 120px;
+	padding-top: 10px;
+}
+
+#linkbar .link a {
+	padding-left: 16px;
+	padding-right: 16px;
+	padding-top: 30px;
+	font-size: 14pt;
+	font-weight: bold;
+	position: relative;
+	text-decoration: none;
+	color: white !important;
+}
+
+#linkbar .link a:hover {
+	text-decoration: none;
+	color: white;
+	/*-webkit-transform: scale(1.1,1.1);
+	-moz-transform: scale(1.1,1.1);
+	-o-transform: scale(1.1,1.1);
+	-ms-transform: scale(1.1,1.1);
+	transform: scale(1.1,1.1);*/
+	text-shadow: -1px 1px 7px #FFF, 1px -1px 7px #FFF;
+}
+
+#main-content {
+	position: relative;
+	padding-top: 20px;
+}
+
+#pagetitle {
+	font-size: 18pt;
+	padding-bottom: 20px;
+}
+
+#footer {
+	text-align: center;
+	margin-top: 25px;
+}
+
+#footer-rule {
+	border-color: #000;
+	size: 3;
+	width: pagewidth;
+}
+
+#planetminecraft {
+	padding-top: 35px;
+	padding-bottom: 25px;
+}
+
+#crypto-addresses {
+	font-family: Courier New;
+	font-size: 10pt;
+	padding-bottom: 25px;
+}
+
+#theme {
+	float: left;
+}
+
+#revision {
+	float: right;
+}
