@@ -1,3 +1,5 @@
+/* Miscellaneous/full-document elements */
+
 @font-face {
 	font-family: Adobe Caslon Pro Bold Italic;
 	src: url('/fonts/caslon/webfont.eot');
@@ -13,6 +15,7 @@
 html {
 	background-color: #D8D8FF;
 	color: black;
+	background-image: url(/img/mc/diamond_ore.png);
 	background-size: 64px;
 	background-attachment: fixed;
 	font-family:  "Tahoma", "Helvetica", sans-serif;
@@ -24,6 +27,7 @@ body {
 	margin-bottom: -8px;
 	margin-left: auto;
 	margin-right: auto;
+	padding-bottom: 30px;
 	background-color: #F9F9F7;
 }
 
@@ -58,6 +62,8 @@ img {
 #container a:hover, #footer a:hover {
 	color: #39F;
 }
+
+/* Header elements */
 
 #header {
 	color: #FFFFFF;
@@ -143,15 +149,19 @@ img {
 	text-shadow: -1px 1px 7px #FFF, 1px -1px 7px #FFF;
 }
 
+/* Main page elements */
+
 #main-content {
 	position: relative;
-	padding-top: 20px;
+	padding-top: 10px;
 }
 
 #pagetitle {
 	font-size: 18pt;
 	padding-bottom: 20px;
 }
+
+/* Footer elements */
 
 #footer {
 	text-align: center;
@@ -181,4 +191,42 @@ img {
 
 #revision {
 	float: right;
+}
+
+/* Rank-based CSS */
+
+.donate {
+	text-shadow: 0px 0px 6px magenta;
+}
+
+.owner {
+	text-shadow: 0px 0px 6px magenta;
+}
+
+.uberadmin {
+	text-shadow: 0px 0px 6px turquoise;
+}
+
+.admin {
+	text-shadow: 0px 0px 6px blue;
+}
+
+.moderator {
+	text-shadow: 0px 0px 6px green;
+}
+
+.uberbuilder {
+	text-shadow: 0px 0px 6px #660066
+}
+
+.scommand {
+	text-shadow: 0px 0px 6px gold
+}
+
+.donator {
+	text-shadow: 0px 0px 6px blue
+}
+
+.vip {
+	text-shadow: 0px 0px 6px gold
 }

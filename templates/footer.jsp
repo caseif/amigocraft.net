@@ -15,12 +15,14 @@
 					<br>
 					Gabencoin: 7krkQzRswaHEriJGu3o7HBvZZGLLjC2a2B</a>
 				</div>
-				<span id="theme">
-					Theme: Default <a href="/theme.jsp">(Change)</a>
-				</span>
-				<span id="revision">
-					Revision 1 <a href="/changelog.jsp">(Changelog)</a>
-				</span>
+				<div id="bottomtext">
+					<span id="theme">
+						Theme: Default <a href="/theme.jsp">(Change)</a>
+					</span>
+					<span id="revision">
+						Revision 1 <a href="/changelog.jsp">(Changelog)</a>
+					</span>
+				</div>
 			</div>
 		</div>
 	</body>
