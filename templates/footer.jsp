@@ -1,8 +1,8 @@
 <!-- BEGIN STANDARD FOOTER -->
 			</div>
 			<div id="footer">
-				<hr id="footer-rule">
-				<hr id="footer-rule">
+				<hr class="rule">
+				<hr class="rule">
 				<div id="planetminecraft">
 					<a href="http://www.planetminecraft.com/server/amigocraft/"><img src="http://amigocraft.net/images/server_banner.png" alt="Amigocraft" title="Amigocraft on PlanetMinecraft" width=300></a>
 				</div>

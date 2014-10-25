@@ -64,12 +64,12 @@
 				</div>
 				<div id="linkbar">
 					<span class="link"><a href="/">Home</a></span>
-					<span class="link"><a href="/forums">Forums</a></span>
-					<span class="link"><a href="/donate">Donate</a></span>
-					<span class="link"><a href="/servers">Servers</a></span>
-					<span class="link"><a href="/downloads">Downloads</a></span>
-					<span class="link"><a href="/tos">ToS</a></span>
-					<span class="link"><a href="/help">Help</a></span>
+					<span class="link"><a href="/forums/">Forums</a></span>
+					<span class="link"><a href="/donate/">Donate</a></span>
+					<span class="link"><a href="/servers/">Servers</a></span>
+					<span class="link"><a href="/downloads/">Downloads</a></span>
+					<span class="link"><a href="/tos/">ToS</a></span>
+					<span class="link"><a href="/help/">Help</a></span>
 				</div>
 			</div>
 			<div id="main-content">
