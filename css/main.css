@@ -19,6 +19,7 @@ html {
 	background-size: 64px;
 	background-attachment: fixed;
 	font-family:  "Tahoma", "Helvetica", sans-serif;
+	margin-bottom: 8px;
 }
 
 body {
@@ -57,12 +58,6 @@ img {
 
 #container a, a:visited {
 	color: darkblue;
-}
-
-.rule {
-	border-color: #000;
-	size: 3;
-	width: pagewidth;
 }
 
 #container a:hover, #footer a:hover {
@@ -167,11 +162,24 @@ img {
 	padding-bottom: 20px;
 }
 
+.rule {
+	border-color: #000;
+	size: 3;
+	width: pagewidth;
+}
+
+#formerror {
+	color: red;
+}
+
 /* Footer elements */
 
 #footer {
 	text-align: center;
 	margin-top: 25px;
+	position: absolute;
+	bottom: 0;
+	padding-bottom: 9px;
 }
 
 #planetminecraft {
@@ -191,6 +199,7 @@ img {
 
 #revision {
 	float: right;
+	padding-right: 5px;
 }
 
 /* Rank-based CSS */
@@ -229,4 +238,11 @@ img {
 
 .vip {
 	text-shadow: 0px 0px 6px gold
+}
+
+/* Irresponsible hacky workaround */
+
+.sendToBottom {
+	position: relative !important;
+	padding-bottom: 0px !important;
 }

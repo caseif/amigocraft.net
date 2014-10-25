@@ -47,6 +47,16 @@
 			}
 			return c_value;
 		}
+		
+		$(document).ready(function() {
+			$('#footer').width($('#container').width());
+			if ($('#container').height() > $('#footer').position().top){
+				$('#footer').addClass('sendToBottom');
+			}
+			console.log($('#container').height());
+			console.log($('#footer').height());
+			console.log($('#footer').position().top);
+		});
 		</script>
 	</head>
 	<body>
