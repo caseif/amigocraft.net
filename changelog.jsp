@@ -1,6 +1,6 @@
 <%@ include file="/templates/header.jsp" %>
 <div id="pagetitle">Site Changelog</div>
-This is the site's changelog file. It chronicles all notable (e.g. not things like "change title indentation") changes made to the website since November of 2014.
+This is the site's changelog file. It chronicles all releases of the webiste since November of 2014.
 <br><br>
 For the legacy changelog, <a href="/legacychangelog.jsp">click here.</a>
 <br>

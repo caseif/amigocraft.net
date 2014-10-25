@@ -3,7 +3,7 @@
 <%@ page import="java.sql.DriverManager" %>
 <%@ page import="java.sql.*" %>
 <%@ page import="java.util.*" %>
-<%@ page import="javax.sql.*;" %>
+<%@ page import="javax.sql.*" %>
 
 <%!
 Exception exception = null;
@@ -20,12 +20,5 @@ public java.sql.Connection getConnection(String db){
 		exception = ex;
 		return null;
 	}
-}
-
-public String exceptionToString(Exception exception){
-	String result = exception.getClass().getCanonicalName();
-	for (StackTraceElement ste : exception.getStackTrace())
-		result += "\n    " + ste.toString();
-	return result;
 }
 %>

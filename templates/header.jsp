@@ -1,4 +1,18 @@
 <!-- BEGIN STANDARD HEADER -->
+<%
+String username = null;
+if (session.getAttribute("username") != null){
+	username = (String)session.getAttribute("username");
+}
+else {
+	for (Cookie c : request.getCookies()){
+		if (c.getName().equals("username") && c.getValue() != null && !c.getValue().isEmpty()){
+			username = c.getValue();
+			break;
+		}
+	}
+}
+%>
 <html>
 	<head>
 		<meta charset="UTF-8">
@@ -63,8 +77,25 @@
 		<div id="container">
 			<div id="header">
 				<div id="loginbar">
-					<a href="/login/register.jsp">Register</a>
-					<a href="/login/login.jsp">Login</a>
+					<%
+					if (username == null){
+					%>
+						<a href="/login/register.jsp?rd=
+						<%= request.getRequestURI().toString().replace("/bleeding", "") %>
+						">Register</a>
+						<a href="/login/login.jsp?rd=
+						<%= request.getRequestURI().toString().replace("/bleeding", "") %>
+						">Login</a>
+					<%
+					}
+					else {
+					%>
+					<a href="/login/logout.jsp?rd=
+						<%= request.getRequestURI().toString().replace("/bleeding", "") %>
+						">Logout</a>
+					<%
+					}
+					%>
 				</div>
 				<div id="banner">
 					<div id="logo">
