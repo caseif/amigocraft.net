@@ -1,62 +1,17 @@
 <%@ include file="/templates/header.jsp" %>
-<%@ include file="/sqlutil.jsp" %>
-
-<%@ page import="java.math.BigInteger" %>
-<%@ page import="java.security.MessageDigest" %>
-<%@ page import="java.security.NoSuchAlgorithmException" %>
-<%@ page import="java.security.SecureRandom" %>
+<%@ include file="/util/sql.jsp" %>
+<%@ include file="/util/crypto.jsp" %>
 
 <div id="pagetitle">Log In</div>
-<%!
-public String md5(String str){
-	try {
-		byte[] hash = MessageDigest.getInstance("MD5").digest(str.getBytes());
-		StringBuffer hexString = new StringBuffer();
-		for (int i = 0; i < hash.length; i++) {
-			if ((0xff & hash[i]) < 0x10) {
-				hexString.append("0" + Integer.toHexString((0xFF & hash[i])));
-			}
-            else {
-				hexString.append(Integer.toHexString(0xFF & hash[i]));
-			}
-        }
-        return hexString.toString();
-	}
-	catch (NoSuchAlgorithmException ex){
-		exception = ex;
-		return null;
-	}
-}
-
-public String sha256(String str){
-	try {
-		byte[] hash = MessageDigest.getInstance("SHA-256").digest(str.getBytes());
-		StringBuffer hexString = new StringBuffer();
-		for (int i = 0; i < hash.length; i++) {
-			if ((0xff & hash[i]) < 0x10) {
-				hexString.append("0" + Integer.toHexString((0xFF & hash[i])));
-			}
-            else {
-				hexString.append(Integer.toHexString(0xFF & hash[i]));
-			}
-        }
-        return hexString.toString();
-	}
-	catch (NoSuchAlgorithmException ex){
-		exception = ex;
-		return null;
-	}
-}
-%>
 <%
 String err = null;
 String suc = null;
-if (username != null){
+if (user != null){
 	response.sendRedirect(request.getParameter("rd") != null ? request.getParameter("rd") : "/");
 	return;
 }
 if (request.getParameter("submit") != null){
-	String user = request.getParameter("username");
+	String username = request.getParameter("username");
 	String password = request.getParameter("password");
 	boolean staySignedIn = request.getParameter("staysignedin") != null;
 	int period = 1;
@@ -73,7 +28,7 @@ if (request.getParameter("submit") != null){
 		unit = request.getParameter("unit");
 	}
 	// input validity checks
-	if (user == null){
+	if (username == null){
 		err = "You must enter a username!";
 		return;
 	}
@@ -93,7 +48,7 @@ if (request.getParameter("submit") != null){
 	PreparedStatement st = null;
 	ResultSet rs = null;
 	try {
-		conn = getConnection("jsptest");
+		conn = getConnection("amigocraft");
 		if (exception != null){
 			err = "An internal error occurred:<br>    " + exception.getClass().getCanonicalName() + (exception.getMessage() != null ? "<br>    \"" + exception.getMessage() + "\"" : "");
 		}
@@ -128,10 +83,10 @@ if (request.getParameter("submit") != null){
 					String hash = rs.getString("password");
 					if (sha256(rs.getString("salt") + password).equals(hash)){ // password matches, sign them in
 						session.setAttribute("userid", rs.getInt("id"));
-						session.setAttribute("username", user);
+						session.setAttribute("user", user);
 						if (staySignedIn){
-							Cookie usernameCookie = new Cookie("username", user);
-							usernameCookie.setPath("/");
+							Cookie userCookie = new Cookie("user", user);
+							userCookie.setPath("/");
 							int age = period;
 							switch (unit){
 								case "hours":
@@ -150,8 +105,8 @@ if (request.getParameter("submit") != null){
 									age *= 60;
 									break;
 							}
-							usernameCookie.setMaxAge(age);
-							response.addCookie(usernameCookie);
+							userCookie.setMaxAge(age);
+							response.addCookie(userCookie);
 						}
 						response.sendRedirect(request.getParameter("rd"));
 					}

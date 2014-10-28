@@ -1,14 +1,16 @@
 <!-- BEGIN STANDARD HEADER -->
 <%
-String username = null;
-if (session.getAttribute("username") != null){
-	username = (String)session.getAttribute("username");
+String user = null;
+if (session.getAttribute("user") != null){
+	user = (String)session.getAttribute("user");
 }
 else {
-	for (Cookie c : request.getCookies()){
-		if (c.getName().equals("username") && c.getValue() != null && !c.getValue().isEmpty()){
-			username = c.getValue();
-			break;
+	if (request.getCookies() != null){
+		for (Cookie c : request.getCookies()){
+			if (c.getName().equals("user") && c.getValue() != null && !c.getValue().isEmpty()){
+				user = c.getValue();
+				break;
+			}
 		}
 	}
 }
@@ -64,7 +66,7 @@ else {
 		
 		$(document).ready(function() {
 			$('#footer').width($('#container').width());
-			if ($('#container').height() > $('#footer').position().top){
+			if ($('#container').height() + 50 > $('#footer').position().top){
 				$('#footer').addClass('sendToBottom');
 			}
 			console.log($('#container').height());
@@ -78,7 +80,7 @@ else {
 			<div id="header">
 				<div id="loginbar">
 					<%
-					if (username == null){
+					if (user == null){
 					%>
 						<a href="/login/register.jsp?rd=
 						<%= request.getRequestURI().toString().replace("/bleeding", "") %>

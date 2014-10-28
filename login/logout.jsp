@@ -1,6 +1,6 @@
 <%
-session.removeAttribute("username");
-Cookie cookie = new Cookie("username", null);
+session.removeAttribute("user");
+Cookie cookie = new Cookie("user", null);
 cookie.setPath("/");
 cookie.setMaxAge(-1);
 response.addCookie(cookie);
