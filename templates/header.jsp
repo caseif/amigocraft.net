@@ -26,7 +26,7 @@ else {
 		if (request.getRequestURL().toString().contains("donate"))
 			out.println("<link rel='stylesheet' type='text/css' href='http://buycraft.net/assets/popup/style.css' />");
 		%>
-		<script type="text/javascript" src="//buycraft.net/assets/popup/script.js"></script>
+		<script type="text/javascript" src="http://buycraft.net/assets/popup/script.js"></script>
 		<script type="text/javascript" src="/js/blur.js"></script>
 		<script type="text/javascript">
 		//<![CDATA[
@@ -37,13 +37,13 @@ else {
 		if (getCookie("js") == null){
 			document.cookie = "js=enabled;path=/";
 		}
-		
+
 		$('html').blurjs({
 			source: 'html',
 			radius: 5,
 			overlay: 'rgba(255, 255, 255, 0.5)'
 		});
-		
+
 		function getCookie(c_name){
 			var c_value = document.cookie;
 			var c_start = c_value.indexOf(" " + c_name + "=");
@@ -63,16 +63,18 @@ else {
 			}
 			return c_value;
 		}
-		
-		$(document).ready(function() {
+
+		$(document).ready(setTimeout(function() {
 			$('#footer').width($('#container').width());
-			if ($('#container').height() + 50 > $('#footer').position().top){
-				$('#footer').addClass('sendToBottom');
+			var contentHeight = $('#header').height() + $('#main-content').height();
+			console.log('container: ' + $('#container').height());
+			console.log('window: ' + $(window).height());
+			console.log('margin: ' + ($(window).height() - $('#container').height()));
+			var margin = $(window).height() - $('#container').height();
+			if (margin > 0){
+				$('#main-content').css('margin-bottom', margin + 16);
 			}
-			console.log($('#container').height());
-			console.log($('#footer').height());
-			console.log($('#footer').position().top);
-		});
+		}, 50)); // I've spent 30 minutes trying to fix the CSS, so I'm giving up and just sticking in a delay
 		</script>
 	</head>
 	<body>

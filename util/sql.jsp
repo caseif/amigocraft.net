@@ -9,8 +9,8 @@
 Exception exception = null;
 
 public java.sql.Connection getConnection(String db){
-	String url = "jdbc:mysql://localhost/" + db;
-	String username = "root";
+	String url = "jdbc:mysql://192.168.1.6/" + db;
+	String username = "site";
 	try {
 		String pass = new BufferedReader(new InputStreamReader(new FileInputStream("/etc/sql.secret"))).readLine();
 		Class.forName("com.mysql.jdbc.Driver");

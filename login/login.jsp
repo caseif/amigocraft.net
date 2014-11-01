@@ -53,7 +53,7 @@ if (request.getParameter("submit") != null){
 			err = "An internal error occurred:<br>    " + exception.getClass().getCanonicalName() + (exception.getMessage() != null ? "<br>    \"" + exception.getMessage() + "\"" : "");
 		}
 		else {
-			st = conn.prepareStatement("SELECT * FROM login WHERE username = '" + user + "'");
+			st = conn.prepareStatement("SELECT * FROM login WHERE username = '" + username + "'");
 			rs = st.executeQuery();
 			if (!rs.next()){
 				err = "Unrecognized username!";
@@ -83,9 +83,9 @@ if (request.getParameter("submit") != null){
 					String hash = rs.getString("password");
 					if (sha256(rs.getString("salt") + password).equals(hash)){ // password matches, sign them in
 						session.setAttribute("userid", rs.getInt("id"));
-						session.setAttribute("user", user);
+						session.setAttribute("user", username);
 						if (staySignedIn){
-							Cookie userCookie = new Cookie("user", user);
+							Cookie userCookie = new Cookie("user", username);
 							userCookie.setPath("/");
 							int age = period;
 							switch (unit){

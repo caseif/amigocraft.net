@@ -1,10 +1,12 @@
-<!-- BEGIN STANDARD FOOTER -->
+			<!-- BEGIN STANDARD FOOTER -->
 			</div>
 			<div id="footer">
 				<hr class="rule">
 				<hr class="rule">
 				<div id="planetminecraft">
-					<a href="http://www.planetminecraft.com/server/amigocraft/"><img src="http://amigocraft.net/images/server_banner.png" alt="Amigocraft" title="Amigocraft on PlanetMinecraft" width=300></a>
+					<a href="http://www.planetminecraft.com/server/amigocraft/"><img
+					src="http://amigocraft.net/images/server_banner.png" alt="Amigocraft" title="Amigocraft on PlanetMinecraft"
+					width=300></a>
 				</div>
 				<div id="crypto-addresses">
 					Bitcoin: <a href="bitcoin:1EGbQEH5Vma3s22CVXNaYnhe9TG72qUsfL">1EGbQEH5Vma3s22CVXNaYnhe9TG72qUsfL</a>

@@ -1,3 +1,5 @@
+<%@ page import="org.apache.commons.validator.EmailValidator" %>
+
 <%@ include file="/templates/header.jsp" %>
 <%@ include file="/util/sql.jsp" %>
 <%@ include file="/util/crypto.jsp" %>
@@ -22,7 +24,7 @@ if (request.getParameter("submit") != null){
 					if (password.length() >= 8){
 						if (email.length() <= 50){
 							if (mcname.isEmpty() || (mcname.length() >= 2 && mcname.length() <= 16)){
-								if (email.contains("@") && email.contains(".")){ //TODO: get Commons Validator working and check the address properly
+								if (EmailValidator.getInstance().isValid(email)){
 									Connection conn = null;
 									PreparedStatement st = null;
 									ResultSet rs = null;
@@ -121,7 +123,7 @@ if (!suc){ //TODO: probably revise this at some point
 					Username<span style="color:red">*</span>
 				</td>
 				<td>
-					<input type="text" name="username" required />
+					<input type="text" name="username" value="${param["username"]}" required />
 				</td>
 			</tr>
 			<tr>
@@ -129,7 +131,7 @@ if (!suc){ //TODO: probably revise this at some point
 					Password<span style="color:red">*</span>
 				</td>
 				<td>
-					<input type="password" name="password" required />
+					<input type="password" name="password" value="" required />
 				</td>
 			</tr>
 			<tr>
@@ -137,7 +139,7 @@ if (!suc){ //TODO: probably revise this at some point
 					Email<span style="color:red">*</span>
 				</td>
 				<td>
-					<input type="text" name="email" required />
+					<input type="text" name="email" value="${param["email"]}" required />
 				</td>
 			</tr>
 			<tr>
@@ -145,7 +147,7 @@ if (!suc){ //TODO: probably revise this at some point
 					Minecraft Username
 				</td>
 				<td>
-					<input type="text" name="mcname" />
+					<input type="text" name="mcname" value="${param["mcname"]}" />
 				</td>
 			</tr>
 			<tr>
