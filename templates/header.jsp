@@ -1,16 +1,13 @@
 <!-- BEGIN STANDARD HEADER -->
+<%@ page import="java.net.URLEncoder" %>
+<%@ page import="java.util.Enumeration" %>
 <%
 String user = null;
-if (session.getAttribute("user") != null){
-	user = (String)session.getAttribute("user");
-}
-else {
-	if (request.getCookies() != null){
-		for (Cookie c : request.getCookies()){
-			if (c.getName().equals("user") && c.getValue() != null && !c.getValue().isEmpty()){
-				user = c.getValue();
-				break;
-			}
+if (request.getCookies() != null){
+	for (Cookie c : request.getCookies()){
+		if (c.getName().equals("user") && c.getValue() != null && !c.getValue().isEmpty()){
+			user = c.getValue();
+			break;
 		}
 	}
 }
@@ -66,10 +63,6 @@ else {
 
 		$(document).ready(setTimeout(function() {
 			$('#footer').width($('#container').width());
-			var contentHeight = $('#header').height() + $('#main-content').height();
-			console.log('container: ' + $('#container').height());
-			console.log('window: ' + $(window).height());
-			console.log('margin: ' + ($(window).height() - $('#container').height()));
 			var margin = $(window).height() - $('#container').height();
 			if (margin > 0){
 				$('#main-content').css('margin-bottom', margin + 16);
@@ -82,22 +75,28 @@ else {
 			<div id="header">
 				<div id="loginbar">
 					<%
+					String url = request.getRequestURI().toString().replace("/bleeding", "") + "?";
+					Enumeration<String> paramNames = request.getParameterNames();
+					while (paramNames.hasMoreElements()){
+	    				String paramName = paramNames.nextElement();
+	    				String[] paramValues = request.getParameterValues(paramName);
+	    				for (int i = 0; i < paramValues.length; i++){
+        					String paramValue = paramValues[i];
+        					url += paramName + "=" + paramValue;
+    					}
+    					url += "&";
+					}
+					url = URLEncoder.encode(url.substring(0, url.length() - 1));
 					if (user == null){
-					%>
-						<a href="/login/register.jsp?rd=
-						<%= request.getRequestURI().toString().replace("/bleeding", "") %>
-						">Register</a>
-						<a href="/login/login.jsp?rd=
-						<%= request.getRequestURI().toString().replace("/bleeding", "") %>
-						">Login</a>
-					<%
+						%>
+						<a href="/login/register.jsp?rd=<%= url %>">Register</a>
+						<a href="/login/login.jsp?rd=<%= url %>">Login</a>
+						<%
 					}
 					else {
-					%>
-					<a href="/login/logout.jsp?rd=
-						<%= request.getRequestURI().toString().replace("/bleeding", "") %>
-						">Logout</a>
-					<%
+						%>
+						<a href="/login/logout.jsp?rd=<%= url %>">Logout</a>
+						<%
 					}
 					%>
 				</div>

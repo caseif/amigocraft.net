@@ -68,7 +68,7 @@ if (request.getParameter("submit") != null){
 						if (suppliedPassHash.equals(md5pass)){ // it matches, we can sign them in
 							String salt = new BigInteger(130, new SecureRandom()).toString(64); // generate a salt for the new password
 							String newHash = sha256(salt + password);
-							st = conn.prepareStatement("UPDATE login SET password = '" + newHash + "', salt = '" + salt + "', md5pass = null WHERE username = '" + user + "'");
+							st = conn.prepareStatement("UPDATE login SET password = '" + newHash + "', salt = '" + salt + "', md5pass = null WHERE username = '" + username + "'");
 							st.executeUpdate();
 						}
 						else {
@@ -82,11 +82,9 @@ if (request.getParameter("submit") != null){
 				else {
 					String hash = rs.getString("password");
 					if (sha256(rs.getString("salt") + password).equals(hash)){ // password matches, sign them in
-						session.setAttribute("userid", rs.getInt("id"));
-						session.setAttribute("user", username);
+						Cookie userCookie = new Cookie("user", username);
+						userCookie.setPath("/");
 						if (staySignedIn){
-							Cookie userCookie = new Cookie("user", username);
-							userCookie.setPath("/");
 							int age = period;
 							switch (unit){
 								case "hours":
@@ -100,14 +98,14 @@ if (request.getParameter("submit") != null){
 									break;
 								case "ever":
 									// In theory, this should make the cookie expire in 2038. In practice, it lasts until 2047. Kinda odd.
-									age = Integer.MAX_VALUE - (int)(System.currentTimeMillis() / 1000 - 12600); // subtract 14 hours to avoid overflow in extreme timezones
+									age = Integer.MAX_VALUE - (int)(System.currentTimeMillis() / 1000 - 3600); // subtract an hour just in case
 								default:
 									age *= 60;
 									break;
 							}
 							userCookie.setMaxAge(age);
-							response.addCookie(userCookie);
 						}
+						response.addCookie(userCookie);
 						response.sendRedirect(request.getParameter("rd"));
 					}
 					else {

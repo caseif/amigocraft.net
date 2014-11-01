@@ -161,6 +161,10 @@ img {
 	padding-bottom: 20px;
 }
 
+#pagetitle a {
+	text-decoration: none;
+}
+
 .rule {
 	border-color: #000;
 	size: 3;
@@ -169,6 +173,43 @@ img {
 
 #formerror {
 	color: red;
+}
+
+/* Forum elements */
+
+#categories {
+	font-size: 16pt;
+}
+
+.category {
+	margin-bottom: 7px;
+}
+
+.category a {
+	text-decoration: none;
+}
+
+.peek-thread {
+	margin-bottom: 15px;
+	background: #B7B7B7;
+	height: 59px;
+}
+
+.peek-avatar {
+	background: #CCC;
+	float: left;
+	padding: 4px 3px 5px 3px;
+}
+
+.post-info {
+	float: left;
+	padding-top: 5px;
+	padding-left: 5px;
+}
+
+.peek-footer {
+	display: block;
+	padding-top: 6px;
 }
 
 /* Footer elements */
