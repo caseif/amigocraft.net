@@ -1,6 +1,8 @@
 <%@ page import="java.net.URLEncoder" %>
 <%@ page import="java.util.Enumeration" %>
 
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+
 <!-- BEGIN STANDARD HEADER -->
 <%
 	String user = null;

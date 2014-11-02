@@ -160,8 +160,9 @@ img {
 }
 
 .rule {
-	border-color: #000;
-	size: 3;
+	color: black;
+	background-color: black;
+	height: 1px;
 	width: 100%;
 }
 
@@ -189,7 +190,7 @@ img {
 	height: 59px;
 }
 
-.peek-avatar {
+.avatar {
 	background: #D6D6D6;
 	float: left;
 	padding: 4px 3px 5px 3px;
@@ -204,6 +205,31 @@ img {
 .peek-footer {
 	display: block;
 	padding-top: 6px;
+}
+
+#op-body {
+	background: #BBB;
+	font-family: Georgia, sans-serif;
+	margin-left: 70px;
+	padding-top: 5px;
+	padding-bottom: 5px;
+}
+
+#op-header {
+	background: #D6D6D6;
+	padding: 3px 0 3px 10px;
+	font-size: 16pt;
+}
+
+#op-content {
+	padding: 10px 10px 10px 10px;
+}
+
+#op-sig {
+	background: #D6D6D6;
+	padding-top: 3px;
+	padding-bottom: 3px;
+	padding-left: 10px;
 }
 
 /* Footer elements */

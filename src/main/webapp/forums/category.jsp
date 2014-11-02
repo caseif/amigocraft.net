@@ -7,10 +7,31 @@
 <%@ include file="/templates/header.jsp" %>
 <%@ include file="/util/misc.jsp" %>
 <%@ include file="/util/sql.jsp" %>
+
+<%
+	if (request.getParameter("c") == null){
+		response.sendRedirect("/forums/");
+	}
+%>
+
 			<div id="pagetitle">
-				<a href="/forums/?last=${param["c"]}">Forum Categories</a>
-				&nbsp;&#8594;&nbsp;
+				<%
+					String lastUrl = "./?lc=" + request.getParameter("c");
+					if (request.getParameter("lt") != null && request.getParameter("ltt") != null){
+						lastUrl += "&lt=" + request.getParameter("lt");
+						lastUrl += "&ltt=" + URLEncoder.encode(request.getParameter("ltt"));
+					}
+					request.setAttribute("lastUrl", lastUrl);
+				%>
+				<a href="${lastUrl}">Forum Categories</a>
+				&#8594;
 				${param["c"]}
+				<%
+					if (request.getParameter("lt") != null) {
+						out.println(" &#8594; <a href=\"thread.jsp?id=" +
+								request.getParameter("lt") + "\">" + request.getParameter("ltt") + "</a>");
+					}
+				%>
 			</div>
 			<div id="threads">
 				<%
@@ -19,7 +40,7 @@
 					ResultSet rs = null;
 					try {
 						conn = getConnection("amigocraft");
-						st = conn.prepareStatement("SELECT * FROM forums WHERE category = '" + request.getParameter("c") + "' AND parent IS NULL ORDER BY updated DESC");
+						st = conn.prepareStatement("SELECT * FROM forums WHERE category = '" + request.getParameter("c") + "' AND parent IS NULL ORDER BY sticky DESC, updated DESC");
 						rs = st.executeQuery();
 						int posts = 0;
 						while (rs.next()) {
@@ -40,7 +61,7 @@
 							}
 				%>
 				<div class="peek-thread">
-					<div class="peek-avatar">
+					<div class="avatar">
 						<img src="http://cravatar.eu/head/<%= mcname %>/50.png">
 						<!-- not intended for public use yet and I don't want to kill the server -->
 						<!--<img src="http://tar.lapis.blue/head/50/<%= mcname %>?angle=30">-->
@@ -60,7 +81,7 @@
 							posts += 1;
 						}
 						if (posts == 0) {
-							out.println("No posts matching the criteria were found");
+							out.println("No posts matching the given criteria were found.");
 						}
 					}
 					catch (Exception ex) {

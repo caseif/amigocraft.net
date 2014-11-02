@@ -2,8 +2,16 @@
 <div id="pagetitle">
 	Forum Categories
 	<%
-		if (request.getParameter("last") != null) {
-			out.println(" &nbsp;&#8594;&nbsp; <a href=\"category.jsp?c=" + request.getParameter("last") + "\">" + request.getParameter("last") + "</a>");
+		if (request.getParameter("lc") != null) {
+			out.println(" &#8594; <a href=\"category.jsp?c=" + request.getParameter("lc") +
+					(request.getParameter("lt") != null && request.getParameter("ltt") != null ?
+							"&lt=" + request.getParameter("lt") + "&ltt=" + URLEncoder.encode(request.getParameter("ltt")) :
+							"") +
+					"\">" + request.getParameter("lc") + "</a>");
+		}
+		if (request.getParameter("lt") != null && request.getParameter("ltt") != null) {
+			out.println(" &#8594; <a href=\"thread.jsp?id=" + request.getParameter("lt") + "\">" +
+					request.getParameter("ltt") + "</a>");
 		}
 	%>
 </div>

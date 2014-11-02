@@ -51,7 +51,7 @@
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-war-plugin</artifactId>
 				<configuration>
-					<webXml>${basedir}/WEB-INF/web.xml</webXml>
+					<webXml>WEB-INF/web.xml</webXml>
 					<packagingExcludes>META-INF/context.xml</packagingExcludes>
 				</configuration>
 			</plugin>

@@ -115,8 +115,7 @@
 			}
 		}
 		catch (Exception ex) {
-			ex.printStackTrace();
-			err = "An internal error occurred; please try again later.<br>    " + ex.getClass().getCanonicalName() + (ex.getMessage() != null ? "<br>    \"" + ex.getMessage() + "\"" : "");
+			response.sendError(500, ex.getClass().getCanonicalName() + ": " + ex.getMessage());
 		}
 	}
 %>
