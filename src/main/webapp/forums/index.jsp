@@ -2,9 +2,9 @@
 <div id="pagetitle">
 	Forum Categories
 	<%
-	if (request.getParameter("last") != null){
-		out.println(" &nbsp;&#8594;&nbsp; <a href=\"category.jsp?c=" + request.getParameter("last") + "\">" + request.getParameter("last") + "</a>");
-	}
+		if (request.getParameter("last") != null) {
+			out.println(" &nbsp;&#8594;&nbsp; <a href=\"category.jsp?c=" + request.getParameter("last") + "\">" + request.getParameter("last") + "</a>");
+		}
 	%>
 </div>
 <div id="categories">
@@ -19,11 +19,11 @@
 				"Ban Appeals",
 				"Offtopic"
 		};
-		for (String cat : cats){
+		for (String cat : cats) {
 			out.println("<div class=\"category\">");
-			out.println(	"<a href=\"category.jsp?c=" + cat + "\">");
-			out.println(		cat);
-			out.println(	"</a>");
+			out.println("<a href=\"category.jsp?c=" + cat + "\">");
+			out.println(cat);
+			out.println("</a>");
 			out.println("</div>");
 		}
 	%>

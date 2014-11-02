@@ -185,12 +185,12 @@ img {
 
 .peek-thread {
 	margin-bottom: 15px;
-	background: #B7B7B7;
+	background: #BBB;
 	height: 59px;
 }
 
 .peek-avatar {
-	background: #CCC;
+	background: #D6D6D6;
 	float: left;
 	padding: 4px 3px 5px 3px;
 }

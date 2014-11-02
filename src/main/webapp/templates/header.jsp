@@ -1,6 +1,7 @@
-<!-- BEGIN STANDARD HEADER -->
 <%@ page import="java.net.URLEncoder" %>
 <%@ page import="java.util.Enumeration" %>
+
+<!-- BEGIN STANDARD HEADER -->
 <%
 	String user = null;
 	if (request.getCookies() != null) {

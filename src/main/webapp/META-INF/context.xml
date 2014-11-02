@@ -1,3 +1,3 @@
-<Context path="/" 
-	antiResourceLocking="false"
-	allowLinking="true" />
+<Context path="/"
+		 antiResourceLocking="false"
+		 allowLinking="true"/>

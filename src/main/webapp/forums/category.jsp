@@ -1,4 +1,8 @@
 <%@ page import="java.text.SimpleDateFormat" %>
+<%@ page import="java.sql.ResultSet" %>
+<%@ page import="java.sql.PreparedStatement" %>
+<%@ page import="java.sql.Connection" %>
+<%@ page import="java.util.Calendar" %>
 
 <%@ include file="/templates/header.jsp" %>
 <%@ include file="/util/misc.jsp" %>
@@ -10,30 +14,30 @@
 			</div>
 			<div id="threads">
 				<%
-				Connection conn = null;
-				PreparedStatement st = null;
-				ResultSet rs = null;
-				try {
-					conn = getConnection("amigocraft");
-					st = conn.prepareStatement("SELECT * FROM forums WHERE category = '" + request.getParameter("c") + "' AND parent IS NULL ORDER BY updated DESC");
-					rs = st.executeQuery();
-					int posts = 0;
-					while (rs.next()){
-						int id = rs.getInt("id");
-						String title = rs.getString("title");
-						long time = rs.getLong("time");
-						Calendar cal = Calendar.getInstance();
-						String formattedDate = new SimpleDateFormat("MMMM dd yyyy 'at' hh:mm aa").format(time * 1000L);
-						String author = rs.getString("author");
-						PreparedStatement userSt = conn.prepareStatement("SELECT * FROM login WHERE username = '" + author + "'");
-						ResultSet userRs = userSt.executeQuery();
-						String mcname;
-						if (userRs.next()){
-							mcname = userRs.getString("mcname");
-						}
-						else {
-							mcname = "Steve";
-						}
+					Connection conn = null;
+					PreparedStatement st = null;
+					ResultSet rs = null;
+					try {
+						conn = getConnection("amigocraft");
+						st = conn.prepareStatement("SELECT * FROM forums WHERE category = '" + request.getParameter("c") + "' AND parent IS NULL ORDER BY updated DESC");
+						rs = st.executeQuery();
+						int posts = 0;
+						while (rs.next()) {
+							int id = rs.getInt("id");
+							String title = rs.getString("title");
+							long time = rs.getLong("time");
+							Calendar cal = Calendar.getInstance();
+							String formattedDate = new SimpleDateFormat("MMMM dd yyyy 'at' hh:mm aa").format(time * 1000L);
+							String author = rs.getString("author");
+							PreparedStatement userSt = conn.prepareStatement("SELECT * FROM login WHERE username = '" + author + "'");
+							ResultSet userRs = userSt.executeQuery();
+							String mcname;
+							if (userRs.next()) {
+								mcname = userRs.getString("mcname");
+							}
+							else {
+								mcname = "Steve";
+							}
 				%>
 				<div class="peek-thread">
 					<div class="peek-avatar">
@@ -53,23 +57,25 @@
 					</div>
 				</div>
 				<%
-				posts += 1;
-			}
-			if (posts == 0){
-				out.println("No posts matching the criteria were found");
-			}
-		}
-		catch (Exception ex){
-			response.sendError(500, exceptionToString(ex));
-		}
-		finally {
-			try {
-				conn.close();
-			}
-			catch (Exception ex){
-				response.sendError(500, exceptionToString(ex));
-			}
-		}
-	%>
+							posts += 1;
+						}
+						if (posts == 0) {
+							out.println("No posts matching the criteria were found");
+						}
+					}
+					catch (Exception ex) {
+						response.sendError(500, exceptionToString(ex));
+					}
+					finally {
+						try {
+							if (conn != null) {
+								conn.close();
+							}
+						}
+						catch (Exception ex) {
+							response.sendError(500, exceptionToString(ex));
+						}
+					}
+				%>
 			</div>
 <%@ include file="/templates/footer.jsp" %>
