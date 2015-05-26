@@ -60,8 +60,7 @@
 <div id="thread">
 	<div id="op">
 		<div class="avatar">
-			<img src="http://cravatar.eu/head/${mcname}/64.png" alt="${author}">
-			<!--<img src="http://tar.lapis.blue/head/64/${mcname}?angle=30" alt="${author}">-->
+			<img src="https://visage.gameminers.com/head/64/${mcname}.png" alt="${author}">
 		</div>
 		<div id="op-body">
 			<div id="op-header">
